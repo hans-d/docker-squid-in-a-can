@@ -52,6 +52,9 @@ if [ "${SQUID_PARENT_ENABLED}" == "true" ]; then
 
 fi
 
+# make sure we have a cache
+squid3 -z
+
 # start
 if [ $# -eq 0 ]; then
   squid3 -N
