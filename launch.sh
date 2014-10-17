@@ -13,7 +13,7 @@ SQUID_PARENT_PORT_UDP=${SQUID_PARENT_PORT_UDP:-0}
 SQUID_ACL=${SQUID_ACL:-}
 SQUID_ALWAYS_DIRECT=${SQUID_ALWAYS_DIRECT:-}
 SQUID_NEVER_DIRECT=${SQUID_NEVER_DIRECT:-}
-if [ -z "${SQUID_NEVER_DIRECT} ${SQUID_ALWAYS_DIRECT" ]; then
+if [ -z "${SQUID_NEVER_DIRECT}${SQUID_ALWAYS_DIRECT}" ]; then
   SQUID_NEVER_DIRECT="allow all"
 fi
 
@@ -58,7 +58,7 @@ if [ $# -eq 0 ]; then
   exit
 fi
 
-if [ "$1" == "redirect"]; then
+if [ "$1" == "redirect" ]; then
   iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to 3129   
   exit
 fi
